@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://bicgraphic.com/OrderLine.schema.json",
+  "type": "object",
+  "title": "OrderLine Data Model Schema",
+  "description": "This Schema defines the OrderLine data in ODS",
+  
+   "required": [
+       "OrderLineData"],
+  "properties": {
+           "OrderLineData": {
+          "type": "object",
+		  "description": "This object identifies the fields required to describe OrderLine object in ODS",
+          "required": ["OrderNumber","OrderLineID","LineNumber"],
+          "properties": {
+						"OrderNumber": {
+							"type": "string",
+							"description": "The OrderNumber in the source system"
+						},
+						"OrderLineID": {
+							"type": "string",
+							"description": "The OrderLine's ID in the source system"
+						},
+						"LineNumber": {
+							"type": "string",
+							"description": "The LineNumber in the source system"
+						},
+						"ProductNumber": {
+							"type": "string",
+							"description": "The ProductNumber in the source system"
+						},
+						"ProductName": {
+							"type": "string",
+							"description": "The ProductName in the source system"
+						},
+						"Uom": {
+							"type": "string",
+							"description": "The Uom in the source system"
+						},
+						"OrderedQty": {
+							"type": "string",
+							"description": "The Ordered Quantity in the source system"
+						},
+						"ShippedQty": {
+							"type": "string",
+							"description": "The Shipped Quantity in the source system"
+						},
+						"LineStatus": {
+							"type": "string",
+							"description": "The Line Status in the source system"
+						},
+						"Price": {
+							"type": "string",
+							"description": "The Price in the source system"
+						},
+						"ShipMethod": {
+							"type": "string",
+							"description": "The Shipping Method in the source system"
+						},
+						"TrackingNumber": {
+							"type": "string",
+							"description": "The Tracking Number in the source system"
+						},
+						"ProofStatus": {
+							"type": "string",
+							"description": "The Proof Status in the source system"
+						},
+						"HoldStatus": {
+							"type": "string",
+							"description": "The Hold Status in the source system"
+						},
+						"ShipDate": {
+							"type": "string",
+							"description": "The Shipping Date in the source system"
+						},
+						"ImprintColor": {
+							"type": "string",
+							"description": "The Imprint Color in the source system"
+						},
+						"ImprintLocation": {
+							"type": "string",
+							"description": "The Imprint Location in the source system"
+						}
+
+					}
+        }
+      }
+    }

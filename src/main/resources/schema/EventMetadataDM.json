@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://bicgraphic.com/eventmetadata.schema.json",
+  "type": "object",
+  "title": "Event Metadata Schema",
+  "description": "This Schema defines the event metadata for use within ODS for Event identification and transmission",
+  
+   "required": [
+       "EventMetadata"],
+  "properties": {
+    "EventMetadata": {
+      "type": "object",
+	  "description": "Orderline Event Request from source system describing the kind of event and the Orderline data being edited",
+      "required": [
+		"EventObject",
+        "EventType",
+        "EventDateTime",
+        "EventSourceSystem",
+        "EventBusinessID",
+		"EventDatabaseName",
+		"EventCollectionName"
+      ],
+      "properties": {
+		"EventObject": {
+          "type": "string",
+		  "description": "The type of event object being transmitted from source system"
+		},
+        "EventType": {
+          "type": "string",
+		  "description": "The type of event data being transmitted from source system. Create / Update /Delete",
+		  "enum": [
+            "CREATE" , "UPDATE", "DELETE"  ]
+        },
+        "EventDateTime": {
+          "type": "string",
+		  "description": "The date and time at which the even occurred in the source system"
+        },
+        "EventSourceSystem": {
+          "type": "string",
+		  "description": "The source system at which the event occured",
+		  "examples": [
+            "EBS"
+          ]
+        },
+        "EventBusinessID": {
+          "type": "string",
+		  "description": "Business event ID for which the data is being transmitted in the current event",
+          "examples": [
+            "Orderline  #"
+          ]
+        },
+        "EventDatabaseName": {
+          "type": "string",
+		  "description": "Mongo DB Database Name to extract event data for associated Event Object",
+          "examples": [
+            "Orderline  #"
+          ]
+        },
+        "EventCollectionName": {
+          "type": "string",
+		  "description": "Mongo DB Collection Name to extract event data for associated Event Object",
+          "examples": [
+            "Orderline  #"
+          ]
+        }
+      }
+    }
+  }
+}

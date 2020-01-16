@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://bicgraphic.com/eventRequest.schema.json",
+  "type": "object",
+  "title": "Event Request Schema",
+  "description": "This Schema defines the event request for pull requests from ODS for object change identification and transmission",
+  
+   "required": [
+       "EventRequest"],
+  "properties": {
+    "EventRequest": {
+      "type": "object",
+	  "description": " Event Request from consumer systems describing the kind of event and data to be retreived",
+      "required": [
+		"EventObject",
+        "EventType",
+        "EventDateTime",
+        "EventSourceSystem",
+        "RequestRecords"
+      ],
+      "properties": {
+		"EventObject": {
+          "type": "string",
+		  "description": "The type of event object expected from ODS"
+		},
+        "EventType": {
+          "type": "string",
+		  "description": "The type of event request from ODS",
+		  "enum": [
+            "PULL_REQUEST"  ]
+        },
+        "EventDateTime": {
+          "type": "string",
+		  "description": "The date and time at which the even occurred in the source system"
+        },
+        "EventRequestSystem": {
+          "type": "string",
+		  "description": "The system requesting the event data",
+		  "examples": [
+            "EBS"
+          ]
+        },
+		"EventSystemOfTruth": {
+          "type": "string",
+		  "description": "The  system of truth at which the event occured",
+		  "examples": [
+            "EBS"
+          ]
+        },
+        "EventBusinessID": {
+          "type": "string",
+		  "description": "Business event ID for which the data is being transmitted in the current event",
+          "examples": [
+            "Orderline  #"
+          ]
+        },
+		"RequestRecords": {
+          "type": "object",
+          "properties": {
+            "RequestRecord": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "KeyName": {
+                      "type": "string",
+					  "description": "The Key name for object requested in ODS for the current event from consumer system",
+					  "examples": [
+						"OrderNumber"
+					]
+                    },
+                    "KeyValue": {
+                      "type": "string",
+					  "description": "The key value returned from ODS for the current event request from consumer system",
+					  "examples": [
+						"2812AJSJ"
+					]
+                    }
+                  }
+                }
+              ]
+            }
+		
+		}
+        }
+      }
+    }
+  }
+}

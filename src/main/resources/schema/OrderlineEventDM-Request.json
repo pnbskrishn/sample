@@ -1,0 +1,133 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://bicgraphic.com/OrderLineevent.schema.json",
+	"type": "object",
+	"title": "OrderLine Event Schema",
+	"description": "This Schema defines the OrderLine event data such as Create Update Delete for data sync to ODS",
+
+	"required": [
+		"EventRequest"
+	],
+	"properties": {
+		"EventRequest": {
+			"type": "object",
+			"description": "OrderLine Event Request from source system describing the kind of event and the OrderLine data being edited",
+			"required": [
+				"EventObject",
+				"EventType",
+				"EventDateTime",
+				"EventSourceSystem",
+				"EventBusinessID",
+				"OrderLine"
+			],
+			"properties": {
+				"EventObject": {
+					"type": "string",
+					"description": "The type of event object being transmitted from source system"
+				},
+				"EventType": {
+					"type": "string",
+					"description": "The type of event data being transmitted from source system. Create / Update /Delete",
+					"enum": [
+						"CREATE", "UPDATE", "DELETE"
+					]
+				},
+				"EventDateTime": {
+					"type": "string",
+					"description": "The date and time at which the even occurred in the source system"
+				},
+				"EventSourceSystem": {
+					"type": "string",
+					"description": "The source system at which the event occured",
+					"examples": [
+						"EBS"
+					]
+				},
+				"EventBusinessID": {
+					"type": "string",
+					"description": "Business event ID for which the data is being transmitted in the current event",
+					"examples": [
+						"OrderLineID #"
+					]
+				},
+				"OrderLine": {
+					"type": "object",
+					"title": "The OrderLine Data model /Schema to ODS",
+					"description": "This object identifies the fields required to describe OrderLine object to ODS",
+					"required": ["OrderNumber","OrderLineID","LineNumber"],
+					"properties": {
+					    "OrderNumber": {
+							"type": "string",
+							"description": "The OrderNumber in the source system"
+						},
+						"OrderLineID": {
+							"type": "string",
+							"description": "The OrderLine's ID in the source system"
+						},
+						"LineNumber": {
+							"type": "string",
+							"description": "The LineNumber in the source system"
+						},
+						"ProductNumber": {
+							"type": "string",
+							"description": "The ProductNumber in the source system"
+						},
+						"ProductName": {
+							"type": "string",
+							"description": "The ProductName in the source system"
+						},
+						"Uom": {
+							"type": "string",
+							"description": "The Uom in the source system"
+						},
+						"OrderedQty": {
+							"type": "string",
+							"description": "The Ordered Quantity in the source system"
+						},
+						"ShippedQty": {
+							"type": "string",
+							"description": "The Shipped Quantity in the source system"
+						},
+						"LineStatus": {
+							"type": "string",
+							"description": "The Line Status in the source system"
+						},
+						"Price": {
+							"type": "string",
+							"description": "The Price in the source system"
+						},
+						"ShipMethod": {
+							"type": "string",
+							"description": "The Shipping Method in the source system"
+						},
+						"TrackingNumber": {
+							"type": "string",
+							"description": "The Tracking Number in the source system"
+						},
+						"ProofStatus": {
+							"type": "string",
+							"description": "The Proof Status in the source system"
+						},
+						"HoldStatus": {
+							"type": "string",
+							"description": "The Hold Status in the source system"
+						},
+						"ShipDate": {
+							"type": "string",
+							"description": "The Shipping Date in the source system"
+						},
+						"ImprintColor": {
+							"type": "string",
+							"description": "The Imprint Color in the source system"
+						},
+						"ImprintLocation": {
+							"type": "string",
+							"description": "The Imprint Location in the source system"
+						}
+
+					}
+				}
+			}
+		}
+	}
+}

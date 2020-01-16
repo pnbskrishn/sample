@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://bicgraphic.com/eventresponse.schema.json",
+  "type": "object",
+  "title": "ODS Event Response Schema",
+  "description": "This Schema defines the event data repsonse from ODS to any and all incoming event data from source systems",
+  
+   "required": [
+       "EventResponse"],
+  "properties": {
+    "EventResponse": {
+      "type": "object",
+	  "required": [
+        "EnterpriseEventID",
+        "EventBusinessID",
+        "EventStatus",
+        "MustRetryFlag"
+      ],
+      "properties": {
+        "EnterpriseEventID": {
+          "type": "string",
+		  "description": "The Unique Event ID generated in ODS for the current event request from Source system"
+        },
+        "EventBusinessID": {
+          "type": "string",
+		  "description": "The business ID provided by the Source system in the Event request"
+        },
+        "EventStatus": {
+          "type": "string",
+		 "description": "The status of the event request within ODS",
+		 "enum": [
+            "SUCCESS" , "ERROR"  ]
+        },
+		"EventErrorCode": {
+          "type": "string",
+		 "description": "The unique error code identifying Business and System Faults to consumers"
+		},
+        "EventStatusMessage": {
+          "type": "string",
+		  "description": "Any pertaining event message that may be needed for the source system. This will be used mostly to describe any error message or description from ODS."
+        },
+        "MustRetryFlag": {
+          "type": "string",
+		  "description": "This flag indicates if the event needs to be retried from the source system in case of any error."
+        }
+      }
+    }
+  }
+}
